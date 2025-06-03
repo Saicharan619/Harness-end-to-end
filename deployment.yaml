@@ -14,14 +14,9 @@ spec:
     spec:
       containers:
       - name: calculator-app
-        # image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         image: saicharan12121/website:latest
         ports:
-        # - containerPort: 8085
         - containerPort: 80
-        # env:
-        # - name: SPRING_PROFILES_ACTIVE
-        #   value: "prod"
 
 ---
 apiVersion: v1
@@ -32,8 +27,7 @@ spec:
   selector:
     app: calculator-app
   ports:
-    - protocol: TCP
-      port: 80
-      # targetPort: 8085
-        targetPort: 80
-  type: LoadBalancer  # If using a cloud provider, otherwise use ClusterIP
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
